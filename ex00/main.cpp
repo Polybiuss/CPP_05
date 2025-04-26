@@ -2,22 +2,22 @@
 
 int main(void){
 	try{
-		Bureaucrat bob(150, "bob");
+		Bureaucrat bob(150, "");
 		std::cout << bob << std::endl;
 		bob.demote();
 		std::cout << bob << std::endl;
 	}
-	catch(std::length_error & e)
-	{
-		std::cout << "Length error : " << e.what() << std::endl;
+	catch(Bureaucrat::GradeTooHighException & e){
+		std::cout << "Err Bureaucrat class high grade : " << e.what() << std::endl;
 	}
-	catch(std::out_of_range & e)
-	{
-		std::cout << "Out of range error : " << e.what() << std::endl;
+	catch(Bureaucrat::GradeTooLowException & e){
+		std::cout << "Err Bureaucrat class low grade : " << e.what() << std::endl;
 	}
-	catch(std::exception & e)
-	{
-		std::cout << "Exception error : " << e.what() << std::endl;
+	catch(Bureaucrat::NameEmptyException & e){
+		std::cout << "Err Bureaucrat name : " << e.what() << std::endl;
+	}
+	catch(std::exception & e){
+		std::cout << "Err exception class : " << e.what() << std::endl;
 	}
 	return (0);
 }
