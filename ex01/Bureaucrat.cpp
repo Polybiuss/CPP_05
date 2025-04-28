@@ -13,9 +13,9 @@ Bureaucrat::Bureaucrat(int grade, std::string const name): _name(name){
 	if (name.empty())
 		throw(NameEmptyException());
 	if (grade > 150)
-		throw(GradeTooLowException());
+		throw(GradeTooHighException());
 	if (grade < 1)
-		throw(GradeTooHighException(), this);
+		throw(GradeTooLowException());
 	this->_grade = grade;
 	std::cout << "Default Bureaucrat constructor called" << std::endl;
 }
@@ -51,13 +51,13 @@ const char * Bureaucrat::NameEmptyException::what(void)const throw() {
 
 void	Bureaucrat::promote(void){
 	if (this->_grade - 1 < 1)
-		throw(GradeTooHighException());
+		throw(GradeTooLowException());
 	--this->_grade; 
 }
 
 void	Bureaucrat::demote(void){
 	if (this->_grade + 1 > 150)
-		throw(GradeTooLowException());
+		throw(GradeTooHighException());
 	++this->_grade;
 }
 

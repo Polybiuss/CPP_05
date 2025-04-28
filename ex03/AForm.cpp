@@ -8,9 +8,9 @@ AForm::AForm(std::string name, int signGrade, int execGrade): _name(name), _isSi
 	if (name.empty())
 		throw(NameEmptyException());
 	if (signGrade > 150 || execGrade > 150)
-		throw(GradeTooLowException());
-	if (signGrade < 1 || execGrade < 1)
 		throw(GradeTooHighException());
+	if (signGrade < 1 || execGrade < 1)
+		throw(GradeTooLowException());
 	std::cout << "Parameters AForm constructor called" << std::endl;
 }
 

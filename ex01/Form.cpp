@@ -8,9 +8,9 @@ Form::Form(std::string name, int signGrade, int execGrade): _name(name), _isSign
 	if (name.empty())
 		throw(NameEmptyException());
 	if (signGrade > 150 || execGrade > 150)
-		throw(GradeTooLowException());
-	if (signGrade < 1 || execGrade < 1)
 		throw(GradeTooHighException());
+	if (signGrade < 1 || execGrade < 1)
+		throw(GradeTooLowException());
 	std::cout << "Parameters Form constructor called" << std::endl;
 }
 
@@ -45,11 +45,11 @@ Form& Form::operator=(Form const & fm){
 }
 
 const char * Form::GradeTooHighException::what(void) const throw(){
-	return ("Grade can't be inferior to 1");
+	return ("Grade can't too high");
 }
 
 const char * Form::GradeTooLowException::what(void) const throw(){
-	return ("Grade can't exceed 150");
+	return ("Grade too low");
 }
 
 const char * Form::NameEmptyException::what(void) const throw(){
@@ -72,6 +72,6 @@ void	Form::beSigned(Bureaucrat const & br){
 }
 
 std::ostream & operator<<(std::ostream & o, Form const & fm){
-	o << "Form " << fm.getName() << (fm.getIsSigned() ? ", who is signed" : ", who is not signed") << " whith " << fm.getSignGrade() << " grade to be signed and " << fm.getExecGrade() << " grade to be executed." << std::endl;
+	o << "Form " << fm.getName() << (fm.getIsSigned() ? ", who is signed" : ", who is not signed") << " whith " << fm.getSignGrade() << " grade to be signed and " << fm.getExecGrade() << " grade to be executed.";
 	return o;
 }
